@@ -16,7 +16,7 @@ categories:
 
 兼容性如下：
 
-![](http://upload-images.jianshu.io/upload_images/5503852-4ab96a2358312df8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://122.51.210.138:8005/sites/default/files/2020-03/5503852-4ab96a2358312df8.png)
 
 不过这意味着大部分IE浏览器（IE11以下）都不能兼容了
 
@@ -55,7 +55,7 @@ Flex(Flexible Box),意思为"弹性布局"
 
 容器采用flex布局后，就被成为flex容器（flex container），它的所有子元素就成为容器成员，被称为flex项目（flex item），对flex布局直观的理解如下：
 
-![](http://upload-images.jianshu.io/upload_images/5503852-10aea32297be2d8f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://122.51.210.138:8005/sites/default/files/2020-03/5503852-10aea32297be2d8f.png)
 
 容器默认存在两根轴： 水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end，交叉轴同理。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。
 
@@ -83,7 +83,7 @@ Flex(Flexible Box),意思为"弹性布局"
 }
 ```
 
-![](http://upload-images.jianshu.io/upload_images/5503852-e8e9ea39bb273412.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://122.51.210.138:8005/sites/default/files/2020-03/5503852-e8e9ea39bb273412.png)
 
 ### justify-content
 用于定义flex容器中flex item在主轴上的对齐方式
@@ -113,7 +113,7 @@ Flex(Flexible Box),意思为"弹性布局"
 
 ``wrap``换行，第一行在上方
 
-![](http://upload-images.jianshu.io/upload_images/5503852-d4c27422febf7051.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://122.51.210.138:8005/sites/default/files/2020-03/5503852-d4c27422febf7051.png)
 
 ``wrap-reverse``换行，第一行在下方
 设置为wrap时,假如我们一行空间不够,我们的flex item在空间不足时会进行换行.创建新的一行.
@@ -131,7 +131,7 @@ Flex(Flexible Box),意思为"弹性布局"
 
 看到他们其实大概就知道是怎么回事啦,这里也就不多说了,其实想象一下就知道了,主要是用于设置行/列位置的属性
 
-![](http://upload-images.jianshu.io/upload_images/5503852-cd56bde0436f2b40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://122.51.210.138:8005/sites/default/files/2020-03/5503852-cd56bde0436f2b40.png)
 
 ### flex-flow
 = ``flex-direction`` + ``flex-wrap``
@@ -189,7 +189,7 @@ flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间�
 
 如果所有项目的flex-shrink属性都为1， 当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。
 
-![](http://upload-images.jianshu.io/upload_images/5503852-74da9660b084c6b3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://122.51.210.138:8005/sites/default/files/2020-03/5503852-74da9660b084c6b3.png)
 
 ### flex-basis属性
 
@@ -220,7 +220,7 @@ item {
 
 align-self属性允许单个项目与其他项目不一样的对齐方式，可覆盖align-item属性，默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于srretch。
 
-![](http://upload-images.jianshu.io/upload_images/5503852-3236b91e556d5f61.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://122.51.210.138:8005/sites/default/files/2020-03/5503852-3236b91e556d5f61.png)
 
 ```
 .item {
@@ -234,4 +234,4 @@ align-self属性允许单个项目与其他项目不一样的对齐方式，可�
 
 布局的传统解决方案，基于盒状模型，依赖 display属性 + position属性 + float属性。它对于那些特殊布局非常不方便，比如，垂直居中就不容易实现。而Flex布局可以简便、完整、响应式地实现各种页面布局。
 
-![](http://upload-images.jianshu.io/upload_images/5503852-1f95c1508623b331.png?imageMogr2/auto-orient/strip) 
+![](http://122.51.210.138:8005/sites/default/files/2020-03/5503852-1f95c1508623b331.png) 

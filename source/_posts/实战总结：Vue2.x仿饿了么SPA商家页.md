@@ -1,5 +1,5 @@
 ---
-title: 项目总结：Vue2.x仿饿了么SPA商家页
+title: 实战总结：Vue2.x仿饿了么SPA商家页
 date: 2017-09-24 13:36:45
 tags:
     - 饿了么.vue
