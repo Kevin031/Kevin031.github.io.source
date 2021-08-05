@@ -29,6 +29,8 @@ jobs:
       run: |
         npm install hexo-cli -g
         npm install
+        git config --global user.name 'Kevin031'
+        git config --global user.email 'kevin019@163.com'
         git clone --branch ${NEXT_VERSION} --depth=10 git@github.com:next-theme/hexo-theme-next.git themes/next
         git checkout -b ${NEXT_VERSION}
         git clone git@github.com:next-theme/theme-next-three --depth=1 themes/next/source/lib/three
