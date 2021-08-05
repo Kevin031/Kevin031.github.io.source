@@ -1,4 +1,4 @@
- workflow name
+# workflow name
 name: Hexo Blog CI
 
 # master branch on push, auto run
