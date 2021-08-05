@@ -18,14 +18,14 @@ jobs:
       uses: actions/checkout@master 
       
     # from: https://github.com/actions/setup-node  
-    - name: Setup Node.js 10.13.0 
+    - name: Setup Node.js 12.x 
       uses: actions/setup-node@master
       with:
-        node-version: "10.13.0"
+        node-version: "12.x"
     
     - name: Setup Hexo Dependencies
       run: |
-        npm install hexo-cli@3.1.0 -g
+        npm install hexo-cli -g
         npm install
     
     - name: Setup Deploy Private Key

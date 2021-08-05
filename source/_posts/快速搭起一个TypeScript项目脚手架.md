@@ -1,5 +1,5 @@
 ---
-title: 从零开始实现React基本功能
+title: 快速搭起一个TypeScript项目脚手架
 date: 2021-07-12 16:21:06
 tags:
   - TypeScript
