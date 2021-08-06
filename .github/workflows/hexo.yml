@@ -24,7 +24,7 @@ jobs:
         node-version: "12.x"
     
     - name: Setup Hexo Dependencies
-      env:
+      # env:
         # NEXT_VERSION: v8.0.0-rc.2
       run: |
         npm install hexo-cli -g
