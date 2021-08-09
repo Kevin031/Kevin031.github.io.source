@@ -33,6 +33,7 @@ jobs:
         git config --global user.email 'kevin019@163.com'
         git clone --branch ${NEXT_VERSION} --depth=10 https://github.com/iissnan/hexo-theme-next themes/next
         git checkout -b ${NEXT_VERSION}
+        cp -f ./_config.next.yml ./themes/next/_config.yml
 
     - name: Setup Deploy Private Key
       env:
