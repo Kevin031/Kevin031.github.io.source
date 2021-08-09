@@ -250,6 +250,85 @@ $ hexo clean
 
 这样可以保证我们能第一时间在服务器上看到效果
 
+### 结合github action实现自动部署
+
+1. 需要将博客hexo源码上传到github仓库
+
+2. `ssh-keygen -t rsa`创建公钥和私钥，私钥存到仓库的`SECRETS`下，命名为`HEXO_DEPLOY_PRI`(后面会用到)，同时存到`{USER}.github.io`仓库下的`DEPLOY KEYS`下，命名为`HEXO_DEPLOY_PRI`
+
+3. 在hexo源码仓库下创建action，yml文件大致如下
+
+```yml
+# workflow name
+name: Hexo Blog CI
+
+# master branch on push, auto run
+on: 
+  push:
+    branches:
+      - master
+      
+jobs:
+  build: 
+    runs-on: ubuntu-latest 
+        
+    steps:
+    # check it to your workflow can access it
+    # from: https://github.com/actions/checkout
+    - name: Checkout Repository master branch
+      uses: actions/checkout@master 
+      
+    # from: https://github.com/actions/setup-node  
+    - name: Setup Node.js 12.x 
+      uses: actions/setup-node@master
+      with:
+        node-version: "12.x"
+    
+    - name: Setup Hexo Dependencies
+      env:
+        NEXT_VERSION: v5.1.2
+      run: |
+        npm install hexo-cli -g
+        npm install
+        git config --global user.name 'Kevin031'
+        git config --global user.email 'kevin019@163.com'
+        # git clone --branch ${NEXT_VERSION} --depth=10 https://github.com/iissnan/hexo-theme-next themes/next
+        # git checkout -b ${NEXT_VERSION}
+        # cp -f ./_config.next.yml ./themes/next/_config.yml
+
+    - name: Setup Deploy Private Key
+      env:
+        HEXO_DEPLOY_PRIVATE_KEY: ${{ secrets.HEXO_DEPLOY_PRI }}
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$HEXO_DEPLOY_PRIVATE_KEY" > ~/.ssh/id_rsa 
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+        
+    - name: Setup Git Infomation
+      run: | 
+        git config --global user.name 'Kevin031' 
+        git config --global user.email 'kevin019@163.com'
+    - name: Deploy Hexo 
+      run: |
+        hexo clean
+        hexo generate 
+        hexo deploy
+```
+
+其中`git`相关配置和`HEXO_DEPLOY_PRI`需要替换成自己设置的值
+
+如果主题是从别的github仓库clone下来的，如果出现版本不一致的情况，执行后可能会出问题，我这里直接把本地的next主题上传到仓库了
+
+如果`git status`未找到主题文件，需要执行
+
+```shell
+git rm --cached themes/next
+git add themes/next
+```
+
+4. 提交代码到`master`分支，action会自动执行，这样就实现提交代码触发正式内容更新了
+
 ***
 
 ### 后续更新
