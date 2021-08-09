@@ -29,10 +29,10 @@ jobs:
       run: |
         npm install hexo-cli -g
         npm install
-        # git config --global user.name 'Kevin031'
-        # git config --global user.email 'kevin019@163.com'
-        # git clone --branch ${NEXT_VERSION} --depth=10 https://github.com/iissnan/hexo-theme-next themes/next
-        # git checkout -b ${NEXT_VERSION}
+        git config --global user.name 'Kevin031'
+        git config --global user.email 'kevin019@163.com'
+        git clone --branch ${NEXT_VERSION} --depth=10 https://github.com/iissnan/hexo-theme-next themes/next
+        git checkout -b ${NEXT_VERSION}
 
     - name: Setup Deploy Private Key
       env:
