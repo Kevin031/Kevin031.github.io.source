@@ -1,7 +1,10 @@
 ---
 title: PHP MVC架构路由功能的简单实现
 date: 2018-12-21 01:25:57
+categories:
+  - 后端
 tags:
+  - PHP
 ---
 目录结构
 

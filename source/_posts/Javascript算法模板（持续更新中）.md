@@ -2,7 +2,7 @@
 title: Javascript算法模板
 date: 2020-04-16 15:00:39
 categories:
-  - 后台
+  - 后端
 tags:
   - 算法
 ---

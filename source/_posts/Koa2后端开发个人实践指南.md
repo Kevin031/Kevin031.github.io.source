@@ -2,10 +2,10 @@
 title: Koa2后端开发个人实践指南
 date: 2020-05-17 23:04:45
 tags:
-  -- Javascript
-  -- Node
+  - Javascript
+  - Node
 categories:
-  -- 后端
+  - 后端
 ---
 
 这是一篇关于``Koa``库的文章，这是我在学习``Node.js``后端开发过程中摸索出来的比较好的实践方式。
