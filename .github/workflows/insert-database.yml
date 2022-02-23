@@ -17,10 +17,12 @@ jobs:
         node-version: "14.x"
     
     - name: Insert database
+      uses: actions/setup-node@master
       env:
         HOST: ${{ secrets.HOST }}
         USER: ${{ secrets.USER }}
         PASSWORD: ${{ secrets.PASSWORD }}
       run: |
+        ls
         npm install commander mysql
         npm run insert-db --host $HOST --user $USER --password $PASSWORD
