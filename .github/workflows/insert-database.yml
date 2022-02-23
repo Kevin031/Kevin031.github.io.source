@@ -22,6 +22,5 @@ jobs:
         USER: ${{ secrets.USER }}
         PASSWORD: ${{ secrets.PASSWORD }}
       run: |
-        ls
         npm install commander mysql
-        npm run insert-db --host $HOST --user $USER --password $PASSWORD
+        node ../dbmaker/index.js --host $HOST --user $USER --password $PASSWORD
