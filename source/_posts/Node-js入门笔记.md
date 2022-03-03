@@ -1,6 +1,8 @@
 ---
 title: Node.js入门笔记
 date: 2017-10-25 15:39:06
+categories:
+  - 后端
 tags:
     - Node.js
     - JavaScript

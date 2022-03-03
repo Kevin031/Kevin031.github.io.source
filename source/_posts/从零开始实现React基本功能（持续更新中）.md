@@ -1,6 +1,7 @@
 ---
 title: 从零开始实现React基本功能
 date: 2020-04-13 23:21:06
+draft: true
 tags:
 ---
 
@@ -24,11 +25,11 @@ tags:
 
 ### 准备工作
 
-```
-// 安装webpack
+```shell
+# 安装webpack
 yarn add webpack webpack-cli webpack-dev-server --dev
 
-// 安装babel
+# 安装babel
 yarn add babel-core babel-loader@^7.0 babel-preset-es2015 babel-preset-stage-0 html-webpack-plugin
 ```
 
