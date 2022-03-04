@@ -59,49 +59,25 @@ function insertMySQL (data) {
       if (err) throw err
       let tags = []
       let categories = []
+      let articles = []
       data.forEach(item => {
         item.tags = item.tags || []
         item.categories = item.categories || []
         item.tags.forEach(tag => {
           if (!tags.includes(tag)) {
-            tags.push(tag)
+            tags.push({
+              name: tag
+            })
           }
         })
         item.categories.forEach(cate => {
           if (!categories.includes(cate)) {
-            categories.push(cate)
-          }
-        })
-        // 文章入库
-        connection.query(`SELECT id FROM post WHERE nid=?`, [item.id], (err, results) => {
-          if (err) throw err
-          if (results[0]) {
-            const id = results[0].id
-            console.log('文章更新', item.title, item.categories)
-            connection.query(`UPDATE post SET title=?, body=?, date=?, tags=?, categories=? WHERE nid=?`, [
-              item.title,
-              item.body,
-              item.date,
-              item.tags.join(','),
-              item.categories.join(','),
-              item.id
-            ], (err, results) => {
-              if (err) throw err
-              console.log(results)
-            })
-          } else {
-            connection.query(`INSERT INTO post (title,nid,body,date,tags,categories) VALUES (?,?,?,?,?,?)`, [
-              item.title,
-              item.id,
-              item.body,
-              item.date,
-              item.tags.join(','),
-              item.categories.join(',')
-            ], err => {
-              if (err) throw err
+            categories.push({
+              name: cate
             })
           }
         })
+        articles.push(item)
       })
       tags.forEach(tag => {
         connection.query(`SELECT * FROM tags WHERE name=?`, [tag], (err, results) => {
@@ -116,8 +92,46 @@ function insertMySQL (data) {
       categories.forEach(category => {
         connection.query(`SELECT * FROM categories WHERE name=?`, [category], (err, results) => {
           if (err) throw err
-          if (!results.length) {
-            connection.query(`INSERT INTO categories (name) VALUES (?)`, [category], err => {
+          if (results[0]) {
+            category.id = results[0].id
+          } else {
+            connection.query(`INSERT INTO categories (name) VALUES (?)`, [category], (err, results) => {
+              if (err) throw err
+              if (results[0]) {
+                category.id = results[0].id
+              }
+            })
+          }
+        })
+      })
+      // 文章入库
+      articles.forEach(item => {
+        connection.query(`SELECT id FROM post WHERE nid=?`, [item.id], (err, results) => {
+          if (err) throw err
+          if (results[0]) {
+            const id = results[0].id
+            const column = categories
+            connection.query(`UPDATE post SET title=?, body=?, date=?, tags=?, categories=?, column=? WHERE nid=?`, [
+              item.title,
+              item.body,
+              item.date,
+              item.tags.join(','),
+              item.categories.join(','),
+              1,
+              id
+            ], (err, results) => {
+              if (err) throw err
+              console.log(results)
+            })
+          } else {
+            connection.query(`INSERT INTO post (title,nid,body,date,tags,categories) VALUES (?,?,?,?,?,?)`, [
+              item.title,
+              item.id,
+              item.body,
+              item.date,
+              item.tags.join(','),
+              item.categories.join(',')
+            ], err => {
               if (err) throw err
             })
           }
